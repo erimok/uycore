@@ -7,21 +7,12 @@ namespace UYCore\PostTypes;
 final class PostType
 {
     private string $post_type;
+    private PostTypeArgs $args;
 
-    /**
-     * @var string[]
-     */
-    private array $args;
-
-    /**
-     * PostTypeProxy constructor.
-     * @param string $post_type
-     * @param string[] $args
-     */
-    public function __construct(string $post_type, ?array $args = null)
+    public function __construct(string $post_type, ?PostTypeArgs $args = null)
     {
         $this->post_type = $post_type;
-        $this->args = $args ?? [];
+        empty($args) ? \UYCore\Facades\PostType::getArgs() : $this->args = $args;
     }
 
     public function getPostType(): string
@@ -34,6 +25,6 @@ final class PostType
      */
     public function getArgs(): array
     {
-        return $this->args;
+        return $this->args->getArray();
     }
 }

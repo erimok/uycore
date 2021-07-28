@@ -1,1 +1,1 @@
-# uycore
+# UYCore WordPress
