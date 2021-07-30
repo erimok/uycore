@@ -232,7 +232,7 @@ final class PostTypeArgs implements ArrayInterface
     /**
      * @param string[] $supports
      */
-    public function setSupports(array $supports = [PostTypeSupport::TITLE, PostTypeSupport::EDITOR]): self
+    public function setSupports(array $supports = [Support::TITLE, Support::EDITOR]): self
     {
         $this->supports = $supports;
 

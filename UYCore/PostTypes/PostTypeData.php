@@ -4,7 +4,9 @@
 namespace UYCore\PostTypes;
 
 
-final class PostType
+use UYCore\Facades\PostType;
+
+final class PostTypeData
 {
     private string $post_type;
     private PostTypeArgs $args;
@@ -12,7 +14,7 @@ final class PostType
     public function __construct(string $post_type, ?PostTypeArgs $args = null)
     {
         $this->post_type = $post_type;
-        empty($args) ? \UYCore\Facades\PostType::getArgs() : $this->args = $args;
+        empty($args) ? PostType::getArgs() : $this->args = $args;
     }
 
     public function getPostType(): string

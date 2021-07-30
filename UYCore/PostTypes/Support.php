@@ -4,7 +4,7 @@
 namespace UYCore\PostTypes;
 
 
-final class PostTypeSupport
+final class Support
 {
     const TITLE = 'title';
     const EDITOR = 'editor';

@@ -10,7 +10,7 @@ use UYCore\PostTypes\Exceptions\PostTypeExistException;
 final class PostTypeRegistration implements InitInterface
 {
     /**
-     * @var \UYCore\PostTypes\PostType[]
+     * @var \UYCore\PostTypes\PostTypeData[]
      */
     private static array $post_types;
 
@@ -26,7 +26,7 @@ final class PostTypeRegistration implements InitInterface
         }
     }
 
-    protected static function registerPostType(PostType $post_type): void
+    protected static function registerPostType(PostTypeData $post_type): void
     {
         try {
             self::isPostTypeExist($post_type->getPostType());
@@ -59,7 +59,7 @@ final class PostTypeRegistration implements InitInterface
         }
     }
 
-    public static function addPostType(PostType $post_type): void
+    public static function addPostType(PostTypeData $post_type): void
     {
         self::$post_types[$post_type->getPostType()] = $post_type;
     }
