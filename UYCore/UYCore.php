@@ -6,8 +6,10 @@ namespace UYCore;
 
 use UYCore\PostTypes\PostTypeRegistration;
 
-final class Init implements InitInterface
+final class UYCore implements InitInterface
 {
+    const TEXT_DOMAIN = 'uycore';
+
     /**
      * @var \UYCore\InitInterface[]
      */

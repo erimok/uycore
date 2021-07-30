@@ -20,7 +20,7 @@ final class PostTypeArgsFactory
         return self::$args;
     }
 
-    private static function setArgs()
+    private static function setArgs(): void
     {
         self::$args = new PostTypeArgs();
     }
@@ -31,21 +31,6 @@ final class PostTypeArgsFactory
             self::setArgs();
         }
 
-        self::$args->setDescription();
-        self::$args->setExcludeFromSearch();
-        self::$args->setHasArchive();
-        self::$args->setHierarchical();
-        self::$args->setLabel();
-        self::$args->setLabels();
-        self::$args->setMenuIcon();
-        self::$args->setMenuPosition();
-        self::$args->setPublic();
-        self::$args->setPubliclyQueryable();
-        self::$args->setQueryVar();
-        self::$args->setRestBase();
-        self::$args->setRewrite();
-        self::$args->setShowInMenu();
-        self::$args->setShowInRest();
-        self::$args->setSupports();
+        self::$args->setDefaultValues();
     }
 }
