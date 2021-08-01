@@ -3,7 +3,7 @@
 
 namespace UYCore\ThemeSupport;
 
-// TODO WP version validation need to add
+// TODO add starter-content
 final class ThemeSupportService
 {
     /**
@@ -91,7 +91,9 @@ final class ThemeSupportService
      */
     public function addTitleTag(): self
     {
-        $this->addSupport('title-tag');
+        if ($this->validateWpVersion(4.1)) {
+            $this->addSupport('title-tag');
+        }
 
         return $this;
     }
@@ -104,7 +106,9 @@ final class ThemeSupportService
      */
     public function addCustomLogo(array $params): self
     {
-        $this->addSupport('custom-logo', $params);
+        if ($this->validateWpVersion(4.5)) {
+            $this->addSupport('custom-logo', $params);
+        }
 
         return $this;
     }
@@ -116,7 +120,9 @@ final class ThemeSupportService
      */
     public function addCustomizeSelectiveRefreshWidgets(): self
     {
-        $this->addSupport('custom-logo');
+        if ($this->validateWpVersion(4.5)) {
+            $this->addSupport('custom-logo');
+        }
 
         return $this;
     }
@@ -134,7 +140,9 @@ final class ThemeSupportService
 
     public function addAlignWide(): self
     {
-        $this->addSupport('align-wide');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('align-wide');
+        }
 
         return $this;
     }
@@ -145,49 +153,63 @@ final class ThemeSupportService
      */
     public function addEditorColorPalette(array $params): self
     {
-        $this->addSupport('editor-color-palette', $params);
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('editor-color-palette', $params);
+        }
 
         return $this;
     }
 
     public function disableCustomColors(): self
     {
-        $this->addSupport('disable-custom-colors');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('disable-custom-colors');
+        }
 
         return $this;
     }
-    
+
     public function addEditorFontSizes(): self
     {
-        $this->addSupport('editor-font-sizes');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('editor-font-sizes');
+        }
 
         return $this;
     }
 
     public function addEditorGradientPresets(array $params): self
     {
-        $this->addSupport('editor-gradient-presets', $params);
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('editor-gradient-presets', $params);
+        }
 
         return $this;
     }
 
     public function disableCustomGradients(): self
     {
-        $this->addSupport('disable-custom-gradients');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('disable-custom-gradients');
+        }
 
         return $this;
     }
 
     public function disableCustomFontSizes(): self
     {
-        $this->addSupport('disable-custom-font-sizes');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('disable-custom-font-sizes');
+        }
 
         return $this;
     }
 
     public function addEditorStyles(): self
     {
-        $this->addSupport('editor-styles');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('editor-styles');
+        }
 
         return $this;
     }
@@ -198,21 +220,27 @@ final class ThemeSupportService
             $this->addEditorStyles();
         }
 
-        $this->addSupport('dark-editor-style');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('dark-editor-style');
+        }
 
         return $this;
     }
 
     public function addWpBlockStyles(): self
     {
-        $this->addSupport('wp-block-styles');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('wp-block-styles');
+        }
 
         return $this;
     }
 
     public function addResponsiveEmbeds(): self
     {
-        $this->addSupport('responsive-embeds');
+        if ($this->validateWpVersion(5.0)) {
+            $this->addSupport('responsive-embeds');
+        }
 
         return $this;
     }
@@ -224,5 +252,10 @@ final class ThemeSupportService
         });
 
         return $this;
+    }
+
+    protected function validateWpVersion(float $required_version): bool
+    {
+        return $required_version >= get_bloginfo('version');
     }
 }
