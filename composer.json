@@ -1,0 +1,14 @@
+{
+    "name": "erimok/uycore",
+    "description": "WordPress library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Uladzislau Yermakou",
+            "email": "erimokvl@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
