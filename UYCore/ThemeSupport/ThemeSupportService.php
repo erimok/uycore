@@ -3,7 +3,8 @@
 
 namespace UYCore\ThemeSupport;
 
-// TODO add starter-content
+use UYCore\Service\WordPress;
+
 final class ThemeSupportService
 {
     /**
@@ -42,6 +43,19 @@ final class ThemeSupportService
     public function addCustomBackground(?array $params = null): self
     {
         $this->addSupport('custom-background', $params);
+
+        return $this;
+    }
+
+    /**
+     * @param array{options: array, theme_mods: array, widgets: array, nav_menus: array, attachments: array, posts: array} $params
+     * @return $this
+     */
+    public function addStarterContent(array $params): self
+    {
+        if (WordPress::validateVersion(4.7)) {
+            $this->addSupport('starter-content', $params);
+        }
 
         return $this;
     }
@@ -91,7 +105,7 @@ final class ThemeSupportService
      */
     public function addTitleTag(): self
     {
-        if ($this->validateWpVersion(4.1)) {
+        if (WordPress::validateVersion(4.1)) {
             $this->addSupport('title-tag');
         }
 
@@ -106,7 +120,7 @@ final class ThemeSupportService
      */
     public function addCustomLogo(array $params): self
     {
-        if ($this->validateWpVersion(4.5)) {
+        if (WordPress::validateVersion(4.5)) {
             $this->addSupport('custom-logo', $params);
         }
 
@@ -120,7 +134,7 @@ final class ThemeSupportService
      */
     public function addCustomizeSelectiveRefreshWidgets(): self
     {
-        if ($this->validateWpVersion(4.5)) {
+        if (WordPress::validateVersion(4.5)) {
             $this->addSupport('custom-logo');
         }
 
@@ -140,7 +154,7 @@ final class ThemeSupportService
 
     public function addAlignWide(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('align-wide');
         }
 
@@ -153,7 +167,7 @@ final class ThemeSupportService
      */
     public function addEditorColorPalette(array $params): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('editor-color-palette', $params);
         }
 
@@ -162,7 +176,7 @@ final class ThemeSupportService
 
     public function disableCustomColors(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('disable-custom-colors');
         }
 
@@ -171,7 +185,7 @@ final class ThemeSupportService
 
     public function addEditorFontSizes(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('editor-font-sizes');
         }
 
@@ -180,7 +194,7 @@ final class ThemeSupportService
 
     public function addEditorGradientPresets(array $params): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('editor-gradient-presets', $params);
         }
 
@@ -189,7 +203,7 @@ final class ThemeSupportService
 
     public function disableCustomGradients(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('disable-custom-gradients');
         }
 
@@ -198,7 +212,7 @@ final class ThemeSupportService
 
     public function disableCustomFontSizes(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('disable-custom-font-sizes');
         }
 
@@ -207,7 +221,7 @@ final class ThemeSupportService
 
     public function addEditorStyles(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('editor-styles');
         }
 
@@ -220,7 +234,7 @@ final class ThemeSupportService
             $this->addEditorStyles();
         }
 
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('dark-editor-style');
         }
 
@@ -229,7 +243,7 @@ final class ThemeSupportService
 
     public function addWpBlockStyles(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('wp-block-styles');
         }
 
@@ -238,7 +252,7 @@ final class ThemeSupportService
 
     public function addResponsiveEmbeds(): self
     {
-        if ($this->validateWpVersion(5.0)) {
+        if (WordPress::validateVersion(5.0)) {
             $this->addSupport('responsive-embeds');
         }
 
@@ -252,10 +266,5 @@ final class ThemeSupportService
         });
 
         return $this;
-    }
-
-    protected function validateWpVersion(float $required_version): bool
-    {
-        return $required_version >= get_bloginfo('version');
     }
 }
