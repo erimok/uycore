@@ -1,7 +1,11 @@
 {
     "name": "erimok/uycore",
     "description": "WordPress library",
+    "version": "dev-1.0.0",
     "type": "library",
+    "keywords": ["wordpress", "wordpress-plugin", "wordpress-development", "php7", "wordpress-php-library"],
+    "homepage": "#",
+    "readme": "README.md",
     "license": "MIT",
     "authors": [
         {
@@ -10,5 +14,12 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "UYCore\\" : "UYCore/"
+        }
+    }
 }
