@@ -109,6 +109,74 @@ final class LabelGenerator
         ];
     }
 
+    public function getTaxonomyLabels(string $singular, string $plural): array
+    {
+        $singular = self::getPreparedString($singular);
+        $plural = self::getPreparedString($plural);
+
+        return [
+            'name' => $plural,
+            'singular_name' => $singular,
+            'menu_name' => $plural,
+            'search_items' => sprintf(
+                esc_html__('Search %s', UYCore::TEXT_DOMAIN),
+                $plural
+            ),
+            'popular_items' =>  sprintf(
+                esc_html__('Popular %s', UYCore::TEXT_DOMAIN),
+                $plural
+            ),
+            'all_items' => sprintf(
+                esc_html__('All %s', UYCore::TEXT_DOMAIN),
+                $plural
+            ),
+            'parent_item' => sprintf(
+                esc_html__('Parent %s', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'parent_item_colon' => sprintf(
+                esc_html__('Parent %s', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'edit_item' => sprintf(
+                esc_html__('Edit %s', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'update_item' => sprintf(
+                esc_html__('Update %s', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'add_new_item' => sprintf(
+                esc_html__('Add new %s', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'view_item' => sprintf(
+                esc_html__('View %s', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'new_item_name' => sprintf(
+                esc_html__('New %s name', UYCore::TEXT_DOMAIN),
+                $singular
+            ),
+            'separate_items_with_commas' => sprintf(
+                esc_html__('Separate %s with commas', UYCore::TEXT_DOMAIN),
+                $plural
+            ),
+            'add_or_remove_items' => sprintf(
+                esc_html__('Add or remove %s', UYCore::TEXT_DOMAIN),
+                $plural
+            ),
+            'choose_from_most_used' => sprintf(
+                esc_html__('Choose from the most used %s', UYCore::TEXT_DOMAIN),
+                $plural
+            ),
+            'not_found' => sprintf(
+                esc_html__('No %s found', UYCore::TEXT_DOMAIN),
+                $plural
+            )
+        ];
+    }
+
     protected static function getPreparedString(string $string): string
     {
         return strtolower($string);
