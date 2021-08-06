@@ -4,7 +4,6 @@
     "version": "dev-1.0.0",
     "type": "library",
     "keywords": ["wordpress", "wordpress-plugin", "wordpress-development", "php7", "wordpress-php-library"],
-    "homepage": "#",
     "readme": "README.md",
     "license": "MIT",
     "authors": [
