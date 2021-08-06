@@ -3,6 +3,7 @@
 namespace UYCore\Taxonomies;
 
 use UYCore\PostTypes\Interfaces\ArrayInterface;
+use UYCore\Services\WordPress;
 
 final class TaxonomyArgs implements ArrayInterface
 {
@@ -14,6 +15,7 @@ final class TaxonomyArgs implements ArrayInterface
     ];
 
     private string $description = '';
+
     /**
      * @var string[]
      */
@@ -27,11 +29,16 @@ final class TaxonomyArgs implements ArrayInterface
     private ?string $rest_base = null;
     private string $rest_controller_class = \WP_REST_Terms_Controller::class;
     private bool $hierarchical = true;
+
     /**
      * @var bool|array
      */
     private bool $rewrite = true;
     private ?bool $publicly_queryable = null;
+
+    /**
+     * @var string[]
+     */
     private array $capabilities = self::CAPABILITIES;
     private ?string $meta_box_cb = null;
     private bool $show_admin_column = false;
@@ -94,7 +101,9 @@ final class TaxonomyArgs implements ArrayInterface
 
     public function setRestBase(?string $rest_base = null): self
     {
-        $this->rest_base = $rest_base;
+        if (WordPress::validateVersion(4.7)) {
+            $this->rest_base = $rest_base;
+        }
 
         return $this;
     }
@@ -118,7 +127,9 @@ final class TaxonomyArgs implements ArrayInterface
 
     public function setShowInRest(?bool $show_in_rest = true): self
     {
-        $this->show_in_rest = $show_in_rest;
+        if (WordPress::validateVersion(4.7)) {
+            $this->show_in_rest = $show_in_rest;
+        }
 
         return $this;
     }
@@ -135,7 +146,9 @@ final class TaxonomyArgs implements ArrayInterface
 
     public function setDefaultTerm(array $default_term = []): self
     {
-        $this->default_term = $default_term;
+        if (WordPress::validateVersion(5.5)) {
+            $this->default_term = $default_term;
+        }
 
         return $this;
     }
@@ -156,7 +169,9 @@ final class TaxonomyArgs implements ArrayInterface
 
     public function setRestControllerClass(string $rest_controller_class = \WP_REST_Terms_Controller::class): self
     {
-        $this->rest_controller_class = $rest_controller_class;
+        if (WordPress::validateVersion(4.7)) {
+            $this->rest_controller_class = $rest_controller_class;
+        }
 
         return $this;
     }
