@@ -1,6 +1,6 @@
 <?php
 
-namespace UYCore\Service;
+namespace UYCore\Services;
 
 final class WordPress
 {
