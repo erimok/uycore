@@ -3,7 +3,7 @@
 
 namespace UYCore\ThemeSupport;
 
-use UYCore\Service\WordPress;
+use UYCore\Services\WordPress;
 
 final class ThemeSupportService
 {

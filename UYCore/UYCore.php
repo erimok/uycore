@@ -5,7 +5,9 @@ namespace UYCore;
 
 
 use UYCore\PostTypes\PostTypeRegistration;
+use UYCore\Taxonomies\TaxonomyRegistration;
 
+// TODO add remove class method
 final class UYCore implements InitInterface
 {
     const TEXT_DOMAIN = 'uycore';
@@ -14,7 +16,8 @@ final class UYCore implements InitInterface
      * @var \UYCore\InitInterface[]
      */
     private static array $classes = [
-        PostTypeRegistration::class
+        PostTypeRegistration::class,
+        TaxonomyRegistration::class
     ];
 
     public static function init(): void
