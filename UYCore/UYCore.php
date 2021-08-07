@@ -4,6 +4,7 @@
 namespace UYCore;
 
 
+use UYCore\Notices\NoticeService;
 use UYCore\PostTypes\PostTypeRegistration;
 use UYCore\Taxonomies\TaxonomyRegistration;
 
@@ -17,7 +18,8 @@ final class UYCore implements InitInterface
      */
     private static array $classes = [
         PostTypeRegistration::class,
-        TaxonomyRegistration::class
+        TaxonomyRegistration::class,
+        NoticeService::class,
     ];
 
     public static function init(): void
