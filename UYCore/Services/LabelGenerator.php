@@ -109,7 +109,7 @@ final class LabelGenerator
         ];
     }
 
-    public function getTaxonomyLabels(string $singular, string $plural): array
+    public static function getTaxonomyLabels(string $singular, string $plural): array
     {
         $singular = self::getPreparedString($singular);
         $plural = self::getPreparedString($plural);
