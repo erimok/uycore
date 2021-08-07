@@ -37,6 +37,22 @@ ThemeSupport::getInstance()
     ->addPostThumbnails(['post']);
 ```
 
+## Security class
+Security facade class allows enhancing WordPress website security.
+```php
+use UYCore\Facades\Security;
+
+Security::secureAll();
+```
+As an alternative way, the developer is able to choose available methods in the security class to enhance security.
+```php
+use UYCore\Facades\Security;
+
+Security::getInstance()
+    ->secureApiByAuth()
+    ->disableXmlRpc();
+```
+
 ## Service classes
 The library provides access to a bunch of service classes.
 

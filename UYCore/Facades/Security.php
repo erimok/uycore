@@ -21,4 +21,13 @@ final class Security
     {
         self::$securityService = new SecurityService();
     }
+
+    public static function secureAll(): void
+    {
+        if (!isset(self::$securityService)) {
+            self::setInstance();
+        }
+
+        self::$securityService->secureAll();
+    }
 }
