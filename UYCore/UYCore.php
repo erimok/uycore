@@ -4,6 +4,7 @@
 namespace UYCore;
 
 
+use UYCore\Enqueue\EnqueueRegistration;
 use UYCore\PostTypes\PostTypeRegistration;
 use UYCore\Taxonomies\TaxonomyRegistration;
 
@@ -17,7 +18,8 @@ final class UYCore implements InitInterface
      */
     private static array $classes = [
         PostTypeRegistration::class,
-        TaxonomyRegistration::class
+        TaxonomyRegistration::class,
+        EnqueueRegistration::class
     ];
 
     public static function init(): void
